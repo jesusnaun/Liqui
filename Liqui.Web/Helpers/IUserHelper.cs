@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Liqui.Web.Helpers
 {
-    interface IUserHelper
+    public interface IUserHelper
     {
         Task<User> GetUserByEmailAsync(string email);
 

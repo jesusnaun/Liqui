@@ -10,9 +10,6 @@ namespace Liqui.Web.Data.Entities
     public class User : IdentityUser
     {
 
-        public int Id { get; set; }
-
-
         [Required]
         [MaxLength(20)]
         [Display(Name = "Nombre")]
