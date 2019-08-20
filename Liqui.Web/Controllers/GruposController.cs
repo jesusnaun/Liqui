@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Liqui.Web.Data;
 using Liqui.Web.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Liqui.Web.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class GruposController : Controller
     {
         private readonly DataContext _context;

@@ -27,6 +27,6 @@ namespace Liqui.Web.Data.Entities
         public string District { get; set; }
 
 
-        public ICollection<UsuarioLocal> UsuarioLocales { get; set; }
+        public ICollection<Usuario> Usuarios { get; set; }
     }
 }

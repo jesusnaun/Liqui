@@ -23,15 +23,16 @@ namespace Liqui.Web.Data
         public async Task SeedAsync()
         {
             await _dataContext.Database.EnsureCreatedAsync();
-            await CheckGrupoAsync();
+            
             //await CheckServiceTypesAsync();
-            //await CheckOwnersAsync();
-            //await CheckPetsAsync();
-            //await CheckAgendasAsync();
+          
+            ////await CheckAgendasAsync();
             await CheckRoles();
             var manager = await CheckUserAsync("Jesús Naún", "jesusnaun@gmail.com", "Admin");
             var customer = await CheckUserAsync("Jesús Naún", "jesusnaun@outlook.com", "Customer");
-
+            await CheckUsuarioAsync(customer);
+            await CheckManagerAsync(manager);
+            await CheckGrupoAsync();
         }
 
 
@@ -86,7 +87,7 @@ namespace Liqui.Web.Data
         }
 
 
-        private async Task CheckOwnerAsync(User user)
+        private async Task CheckUsuarioAsync(User user)
         {
             if (!_dataContext.Usuarios.Any())
             {

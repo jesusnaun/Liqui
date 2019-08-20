@@ -9,49 +9,49 @@ namespace Liqui.Web.Data.Entities
     {
         public int Id { get; set; }
 
-        public UsuarioLocal UsuarioLocal { get; set; }
+        public Usuario Usuario { get; set; }
 
         public DateTime MyDate { get; set; }
 
 
-        public Decimal Efectivo { get; set; }
+        public decimal Efectivo { get; set; }
 
-        public Decimal VisaDebito { get; set; }
+        public decimal VisaDebito { get; set; }
 
-        public Decimal VisaCredito { get; set; }
+        public decimal VisaCredito { get; set; }
 
-        public Decimal MasterDebito { get; set; }
+        public decimal MasterDebito { get; set; }
 
-        public Decimal MasterCredito { get; set; }
+        public decimal MasterCredito { get; set; }
 
-        public Decimal AmericanExpress { get; set; }
+        public decimal AmericanExpress { get; set; }
 
-        public Decimal DinersClub { get; set; }
+        public decimal DinersClub { get; set; }
 
-        public Decimal PersonalI { get; set; }
+        public decimal PersonalI { get; set; }
 
-        public Decimal OtrosI { get; set; }
+        public decimal OtrosI { get; set; }
 
-        public Decimal TotalIngresos { get; set; }
+        public decimal TotalIngresos { get; set; }
 
-        public Decimal InsumoSinProcesar { get; set; }
+        public decimal InsumoSinProcesar { get; set; }
 
-        public Decimal InsumoPorProcesar { get; set; }
+        public decimal InsumoPorProcesar { get; set; }
 
-        public Decimal NoInsumo { get; set; }
-
-
-        public Decimal PersonalE { get; set; }
-
-        public Decimal OtrosE { get; set; }
-
-        public Decimal TotalEgresos { get; set; }
+        public decimal NoInsumo { get; set; }
 
 
-        public Decimal UtilidadBruta { get; set; }
+        public decimal PersonalE { get; set; }
+
+        public decimal OtrosE { get; set; }
+
+        public decimal TotalEgresos { get; set; }
 
 
-        public Decimal UtilidadEfetivo { get; set; }
+        public decimal UtilidadBruta { get; set; }
+
+
+        public decimal UtilidadEfetivo { get; set; }
 
 
         public HojaProducto HojaProducto { get; set; }

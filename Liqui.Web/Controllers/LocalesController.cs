@@ -7,29 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Liqui.Web.Data;
 using Liqui.Web.Data.Entities;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Liqui.Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
-
-
-    public class UsuariosController : Controller
+    public class LocalesController : Controller
     {
         private readonly DataContext _context;
 
-        public UsuariosController(DataContext context)
+        public LocalesController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: Usuarios
+        // GET: Locales
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuarios.ToListAsync());
+            return View(await _context.Locales.ToListAsync());
         }
 
-        // GET: Usuarios/Details/5
+        // GET: Locales/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,39 +33,39 @@ namespace Liqui.Web.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
+            var local = await _context.Locales
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuario == null)
+            if (local == null)
             {
                 return NotFound();
             }
 
-            return View(usuario);
+            return View(local);
         }
 
-        // GET: Usuarios/Create
+        // GET: Locales/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Usuarios/Create
+        // POST: Locales/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Id,Name,Address,District")] Local local)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(usuario);
+                _context.Add(local);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(usuario);
+            return View(local);
         }
 
-        // GET: Usuarios/Edit/5
+        // GET: Locales/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,22 +73,22 @@ namespace Liqui.Web.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario == null)
+            var local = await _context.Locales.FindAsync(id);
+            if (local == null)
             {
                 return NotFound();
             }
-            return View(usuario);
+            return View(local);
         }
 
-        // POST: Usuarios/Edit/5
+        // POST: Locales/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Address,District")] Local local)
         {
-            if (id != usuario.Id)
+            if (id != local.Id)
             {
                 return NotFound();
             }
@@ -101,12 +97,12 @@ namespace Liqui.Web.Controllers
             {
                 try
                 {
-                    _context.Update(usuario);
+                    _context.Update(local);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioExists(usuario.Id))
+                    if (!LocalExists(local.Id))
                     {
                         return NotFound();
                     }
@@ -117,10 +113,10 @@ namespace Liqui.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(usuario);
+            return View(local);
         }
 
-        // GET: Usuarios/Delete/5
+        // GET: Locales/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -128,30 +124,30 @@ namespace Liqui.Web.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
+            var local = await _context.Locales
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuario == null)
+            if (local == null)
             {
                 return NotFound();
             }
 
-            return View(usuario);
+            return View(local);
         }
 
-        // POST: Usuarios/Delete/5
+        // POST: Locales/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
-            _context.Usuarios.Remove(usuario);
+            var local = await _context.Locales.FindAsync(id);
+            _context.Locales.Remove(local);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsuarioExists(int id)
+        private bool LocalExists(int id)
         {
-            return _context.Usuarios.Any(e => e.Id == id);
+            return _context.Locales.Any(e => e.Id == id);
         }
     }
 }

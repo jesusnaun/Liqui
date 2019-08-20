@@ -20,7 +20,7 @@ namespace Liqui.Web.Data
         public DbSet<Local> Locales { get; set; }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<UsuarioLocal> UsuarioLocales { get; set; }
+        
 
 
         public DbSet<Manager> Managers { get; set; }
