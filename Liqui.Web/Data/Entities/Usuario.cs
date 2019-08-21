@@ -24,6 +24,7 @@ namespace Liqui.Web.Data.Entities
         public User User { get; set; }
 
         public Local Local { get; set; }
+  
 
         public ICollection<HojaLiquidacion> HojaLiquidaciones { get; set; }
 

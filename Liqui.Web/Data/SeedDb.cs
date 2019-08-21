@@ -30,7 +30,10 @@ namespace Liqui.Web.Data
             await CheckRoles();
             var manager = await CheckUserAsync("Jesús Naún", "jesusnaun@gmail.com", "Admin");
             var customer = await CheckUserAsync("Jesús Naún", "jesusnaun@outlook.com", "Customer");
-            await CheckUsuarioAsync(customer);
+            var customer2 = await CheckUserAsync("Alicia Mariet", "alicia@outlook.com", "Customer");
+            await CheckUsuarioAsync(customer,customer2);
+            //await CheckUsuarioAsync(customer);
+           
             await CheckManagerAsync(manager);
             await CheckGrupoAsync();
         }
@@ -67,8 +70,7 @@ namespace Liqui.Web.Data
         private async Task CheckGrupoAsync()
         {
             var grupo = _dataContext.Grupos.FirstOrDefault();
-            var petType = _dataContext.Grupos.FirstOrDefault();
-            if (!_dataContext.Grupos.Any())
+           if (!_dataContext.Grupos.Any())
             {
                 AddGrupo("Bebidas");
                 AddGrupo("Pollo a la brasa");
@@ -87,11 +89,12 @@ namespace Liqui.Web.Data
         }
 
 
-        private async Task CheckUsuarioAsync(User user)
+        private async Task CheckUsuarioAsync(User user,User user2)
         {
             if (!_dataContext.Usuarios.Any())
             {
                 _dataContext.Usuarios.Add(new Usuario { User = user });
+                _dataContext.Usuarios.Add(new Usuario { User = user2 });
                 await _dataContext.SaveChangesAsync();
             }
         }
